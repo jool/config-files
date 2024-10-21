@@ -31,7 +31,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-if ! test -e "$HOME/.local/share/broot"; then
+if ! test -e "$HOME/.local/share/broot.zsh"; then
     echo "broot shell function not found, will generate file"
     broot --print-shell-function zsh > "$HOME/.local/share/broot.zsh"
 fi
