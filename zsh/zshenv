@@ -1,0 +1,15 @@
+export XDG_CONFIG_HOME="$HOME/.config"
+
+export EDITOR=nvim
+export TERM=xterm
+export CLICOLOR=1
+
+export LANG=en_US.UTF-8
+export LC_TYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+export GC_REPOSITORY_HOST=eu.gcr.io
+export GC_PROJECT_ID=stoer-cd
+
+export LEDGER_FILE=~/git/jool/mystuff/jool-hledger/journals/hledger.journal
+

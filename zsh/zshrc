@@ -1,0 +1,41 @@
+# -*- mode: sh; -*-
+
+# Assert oh-my-zsh is installed
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+  echo "Oh My Zsh not found! Installing Oh My Zsh..."
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
+
+# Path to your oh-my-zsh configuration.
+ZSH=$HOME/.oh-my-zsh
+#ZSH_THEME="robbyrussell"
+ZSH_THEME="sorin"
+plugins=(direnv git macos docker kubectl gradle macports)
+
+source ~/.config/zsh/0_path.zsh
+source ~/.config/zsh/aliases.zsh
+source ~/.config/zsh/docker.zsh
+source ~/.config/zsh/stoer.zsh
+source ~/.config/zsh/git.zsh
+
+source $ZSH/oh-my-zsh.sh
+
+unalias run-help
+autoload run-help
+alias help=run-help
+HELPDIR="/usr/share/zsh/$(zsh --version | cut -d' ' -f2)/help"
+
+source /opt/local/libexec/kubeswitch/switch.sh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+if ! test -e "$HOME/.local/share/broot"; then
+    echo "broot shell function not found, will generate file"
+    broot --print-shell-function zsh > "$HOME/.local/share/broot.zsh"
+fi
+source $HOME/.local/share/broot.zsh
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+[[ -s "/Users/jonathan/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/jonathan/.sdkman/bin/sdkman-init.sh"
